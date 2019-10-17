@@ -14,9 +14,14 @@ import java.lang.reflect.Field;
 public class RangeHandler implements AnnotationHandler {
 
     @Override
-    public void checkField(Field field, Object object, Annotation annotation) throws Exception {
+    public void checkField(Field field, Object object, Annotation annotation,String timing) throws Exception {
         if(field == null || annotation == null){
             return ;
         }
+    }
+
+    @Override
+    public boolean checkObject(Object object, Annotation annotation, String timing) throws Exception {
+        return false;
     }
 }

@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class NotNullHandler implements AnnotationHandler {
 
     @Override
-    public void checkField(Field field, Object object, Annotation annotation) throws Exception {
+    public void checkField(Field field, Object object, Annotation annotation,String timing) throws Exception {
         if(field == null || annotation == null){
             return ;
         }
@@ -32,6 +32,11 @@ public class NotNullHandler implements AnnotationHandler {
         } catch (IllegalAccessException e) {
             throw new ParameterException(msg);
         }
+    }
+
+    @Override
+    public boolean checkObject(Object object, Annotation annotation,String timing) throws Exception {
+        return false;
     }
 
 }

@@ -25,6 +25,12 @@ public @interface ToCheck {
     String msg() default "the object which add ToCheck annotation must be match the rule";
 
     /**
+     * the handler method for check
+     * @return
+     */
+    String handlerMethod();
+
+    /**
      *  the timing for use the annotation,you can defined multiple timing for different place
      */
     String[] timing() default ValueEnum.EMPTY_STRING;

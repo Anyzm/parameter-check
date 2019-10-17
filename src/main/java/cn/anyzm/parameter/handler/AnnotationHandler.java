@@ -16,6 +16,14 @@ public interface AnnotationHandler {
      * @param object
      * @param annotation
      */
-    void checkField(Field field,Object object, Annotation annotation) throws Exception;
+    void checkField(Field field,Object object, Annotation annotation,String timing) throws Exception;
+
+    /**
+     * to check a object for return true pass and return false not pass
+     * @param object
+     * @return
+     * @throws Exception
+     */
+    boolean checkObject(Object object, Annotation annotation,String timing)throws Exception;
 
 }

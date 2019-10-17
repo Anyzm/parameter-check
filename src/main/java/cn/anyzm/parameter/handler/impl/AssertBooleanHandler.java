@@ -1,5 +1,6 @@
 package cn.anyzm.parameter.handler.impl;
 
+import cn.anyzm.parameter.annotation.Max;
 import cn.anyzm.parameter.handler.AnnotationHandler;
 
 import java.lang.annotation.Annotation;
@@ -14,9 +15,19 @@ import java.lang.reflect.Field;
 public class AssertBooleanHandler implements AnnotationHandler {
 
     @Override
-    public void checkField(Field field, Object object, Annotation annotation) throws Exception {
+    public void checkField(Field field, Object object, Annotation annotation,String timing) throws Exception {
         if(field == null || annotation == null){
             return ;
         }
+    }
+
+    @Override
+    public boolean checkObject(Object object, Annotation annotation,String timing) throws Exception {
+        if(object != null && object instanceof Boolean && annotation != null){
+            Max max = (Max)annotation;
+//            max.canEquals()
+            return (Boolean)object;
+        }
+        return false;
     }
 }

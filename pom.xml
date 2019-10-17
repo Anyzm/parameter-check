@@ -8,7 +8,7 @@
         <version>2.1.9.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.qihoo.finance</groupId>
+    <groupId>com.city.party</groupId>
     <artifactId>parameter-check</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>parameter-check</name>
@@ -39,11 +39,6 @@
             <version>${lombok.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
-        </dependency>
     </dependencies>
 
     <!--<build>-->
