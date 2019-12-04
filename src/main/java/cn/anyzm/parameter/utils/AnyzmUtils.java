@@ -3,6 +3,8 @@ package cn.anyzm.parameter.utils;
 import cn.anyzm.parameter.constant.ValueEnum;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collection;
 
 /**
  * @author huangzhaolai-jk
@@ -13,6 +15,7 @@ import java.lang.reflect.Array;
 public class AnyzmUtils {
     /**
      * check the array and it's elements all are empty
+     *
      * @param array
      * @param <T>
      * @return
@@ -22,15 +25,8 @@ public class AnyzmUtils {
             return true;
         } else {
             for (T t : array) {
-                if (t instanceof Array) {
-                    Object[] ax = (Object[]) t;
-                    if (!isDeepEmpty(ax)) {
-                        return false;
-                    }
-                } else {
-                    if (t != null) {
-                        return false;
-                    }
+                if (t != null) {
+                    return false;
                 }
             }
             return true;
@@ -39,12 +35,40 @@ public class AnyzmUtils {
 
     /**
      * check the array is empty
+     *
      * @param array
      * @param <T>
      * @return
      */
     public static <T> boolean isEmpty(T[] array) {
         return array == null || array.length == ValueEnum.ZERO;
+    }
+
+    /**
+     * check String is empty
+     * @param s
+     * @return
+     */
+    public static boolean isEmpty(String s){
+        return s == null || ValueEnum.EMPTY_STRING.equals(s);
+    }
+
+    /**
+     * check Collection is empty
+     * @param collection
+     * @return
+     */
+    public static boolean isEmpty(Collection collection){
+        return collection == null || collection.isEmpty();
+    }
+
+    /**
+     * check String is blank
+     * @param s
+     * @return
+     */
+    public static boolean isBlank(String s){
+        return s == null || ValueEnum.EMPTY_STRING.equals(s.trim());
     }
 
 }

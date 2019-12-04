@@ -1,12 +1,10 @@
 package cn.anyzm.parameter.handler.impl;
 
-import cn.anyzm.parameter.annotation.NotEmpty;
+import cn.anyzm.parameter.annotation.Length;
 import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.handler.AnnotationHandler;
-import cn.anyzm.parameter.utils.AnyzmUtils;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.Collection;
@@ -15,18 +13,18 @@ import java.util.Map;
 /**
  * @author huangzhaolai-jk
  * @version 1.0.0
- * @Description NotEmptyHandler is used for
- * @Date 2019/10/12 - 17:23
+ * @Description LengthHandler is used for
+ * @Date 2019/12/4 - 16:07
  */
-public class NotEmptyHandler extends AnnotationHandler {
+public class LengthHandler extends AnnotationHandler {
 
     @Override
     protected boolean isTiming(Annotation annotation, String timing) {
-        if(annotation == null || !(annotation instanceof NotEmpty)){
+        if(annotation == null || !(annotation instanceof Length)){
             return false;
         }
-        NotEmpty notEmpty = (NotEmpty) annotation;
-        String[] annotationTiming = notEmpty.timing();
+        Length length = (Length) annotation;
+        String[] annotationTiming = length.timing();
         return isTiming(timing,annotationTiming);
     }
 
@@ -36,30 +34,35 @@ public class NotEmptyHandler extends AnnotationHandler {
             return;
         }
         field.setAccessible(true);
-        NotEmpty notEmpty = (NotEmpty) annotation;
-        String msg = notEmpty.msg();
+        Length length = (Length) annotation;
+        String msg = length.msg();
         try {
             Object o = field.get(object);
             if (o == null) {
-                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+                if (length.minLength() != ValueEnum.MINUS_ONE) {
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+                }
             } else if (o instanceof String) {
+                //String type check length
                 String s = (String) o;
-                if (AnyzmUtils.isEmpty(s)) {
+                if (s.length() < length.maxLength() || s.length() > length.maxLength()) {
                     throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
                 }
             } else if (o instanceof Collection) {
+                //Collection type check size
                 Collection collection = (Collection) o;
-                if (AnyzmUtils.isEmpty(collection)) {
+                if (collection.size() < length.minLength() || collection.size() > length.maxLength()) {
                     throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
                 }
             } else if (o.getClass().isArray()) {
                 Object[] objects = (Object[]) o;
-               if(AnyzmUtils.isDeepEmpty(objects)){
-                   throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
-               }
+                if(objects.length < length.minLength() || objects.length > length.maxLength()){
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+                }
             } else {
-                throw new ParameterException(ExceptionCodeMsg.NOT_EMPTY_CAST_ERROR, field.getName());
+                throw new ParameterException(ExceptionCodeMsg.LENGTH_CAST_ERROR, field.getName());
             }
+
         } catch (IllegalAccessException e) {
             throw new ParameterException(msg);
         }
@@ -69,4 +72,5 @@ public class NotEmptyHandler extends AnnotationHandler {
     public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws Exception {
         return null;
     }
+
 }

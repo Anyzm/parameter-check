@@ -7,6 +7,7 @@ import cn.anyzm.parameter.handler.AnnotationHandler;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.Map;
 
 /**
  * @author huangzhaolai-jk
@@ -14,10 +15,20 @@ import java.lang.reflect.Field;
  * @Description NotNullHandler is used for
  * @Date 2019/10/12 - 17:21
  */
-public class NotNullHandler implements AnnotationHandler {
+public class NotNullHandler extends AnnotationHandler {
 
     @Override
-    public void checkField(Field field, Object object, Annotation annotation,String timing) throws Exception {
+    protected boolean isTiming(Annotation annotation, String timing) {
+        if(annotation == null || !(annotation instanceof NotNull)){
+            return false;
+        }
+        NotNull notNull = (NotNull) annotation;
+        String[] annotationTiming = notNull.timing();
+        return isTiming(timing,annotationTiming);
+    }
+
+    @Override
+    public void checkField(Field field, Object object, Annotation annotation) throws Exception {
         if(field == null || annotation == null){
             return ;
         }
@@ -35,8 +46,8 @@ public class NotNullHandler implements AnnotationHandler {
     }
 
     @Override
-    public boolean checkObject(Object object, Annotation annotation,String timing) throws Exception {
-        return false;
+    public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws Exception {
+        return null;
     }
 
 }

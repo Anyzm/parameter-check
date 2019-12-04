@@ -23,6 +23,11 @@ public class ValueEnum {
      * empty String
      */
     public static final String EMPTY_STRING = "";
+
+    /**
+     * the default can_equals value
+     */
+    public static final boolean DEFAULT_CAN_EQUALS = true;
     /**
      * the timing value for use all the time
      */
@@ -35,6 +40,10 @@ public class ValueEnum {
      * one
      */
     public static final int ONE = 1;
+    /**
+     * MINUS ONE
+     */
+    public static final int MINUS_ONE = -1;
     /**
      * default error code
      */

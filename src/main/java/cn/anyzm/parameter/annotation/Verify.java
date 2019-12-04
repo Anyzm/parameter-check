@@ -2,10 +2,8 @@ package cn.anyzm.parameter.annotation;
 
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.handler.ParameterCheckHandler;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+
+import java.lang.annotation.*;
 
 /**
  * @author huangzhaolai-jk
@@ -21,6 +19,6 @@ public @interface Verify {
      * the timing or version for check
      * @return
      */
-    String timing() default ValueEnum.EMPTY_STRING;
+    String timing() default ValueEnum.ALL_THE_TIME;
 
 }
