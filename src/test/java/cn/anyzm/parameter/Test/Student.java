@@ -1,6 +1,9 @@
 package cn.anyzm.parameter.Test;
 
+import cn.anyzm.parameter.annotation.AssertBoolean;
+import cn.anyzm.parameter.annotation.Min;
 import cn.anyzm.parameter.annotation.NotNull;
+import cn.anyzm.parameter.annotation.Range;
 import lombok.Data;
 
 /**
@@ -15,6 +18,10 @@ public class Student {
     @NotNull
     private String name;
 
+    @Range(minValue = 1,maxValue = 2)
     private int age = 1;
+
+    @AssertBoolean
+    private boolean flag = false;
 
 }

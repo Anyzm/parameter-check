@@ -40,6 +40,10 @@ public enum ExceptionCodeMsg {
      */
     RANGE_CAST_ERROR(6781007,"Range must be added to a Number field"),
     /**
+     * REGULAR_MATCH_CAST_ERROR
+     */
+    REGULAR_MATCH_CAST_ERROR(6781008,"RegularMatch must be added to a String type"),
+    /**
      * null
      */
     NULL(6780001,"object must not be null"),

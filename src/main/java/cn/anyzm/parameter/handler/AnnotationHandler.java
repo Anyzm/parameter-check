@@ -1,6 +1,7 @@
 package cn.anyzm.parameter.handler;
 
 import cn.anyzm.parameter.constant.ValueEnum;
+import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
@@ -19,7 +20,7 @@ import java.util.Objects;
 public abstract class AnnotationHandler implements CheckHandler{
 
     @Override
-    public final void checkFieldTemplate(Field field, Object object, Annotation annotation, String timing) throws Exception {
+    public final void checkFieldTemplate(Field field, Object object, Annotation annotation, String timing) throws ParameterException {
         if(isTiming(annotation,timing)){
             checkField(field,object,annotation);
         }
@@ -33,7 +34,7 @@ public abstract class AnnotationHandler implements CheckHandler{
      * @param object
      * @param annotation
      */
-    protected abstract void checkField(Field field,Object object, Annotation annotation) throws Exception;
+    protected abstract void checkField(Field field,Object object, Annotation annotation) throws ParameterException;
 
     /**
      * to check a object for return true pass and return false not pass
@@ -41,7 +42,7 @@ public abstract class AnnotationHandler implements CheckHandler{
      * @return
      * @throws Exception
      */
-    protected abstract Map<String,String> checkObject(Object object, Annotation annotation, String timing)throws Exception;
+    protected abstract Map<String,String> checkObject(Object object, Annotation annotation, String timing)throws ParameterException;
 
     protected boolean isTiming(String fieldTiming,String... annotationTiming){
         if(AnyzmUtils.isEmpty(annotationTiming)){

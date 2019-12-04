@@ -30,7 +30,7 @@ public class NotBlankHandler extends AnnotationHandler {
     }
 
     @Override
-    public void checkField(Field field, Object object, Annotation annotation) throws Exception {
+    public void checkField(Field field, Object object, Annotation annotation) throws ParameterException {
         if (field == null || annotation == null) {
             return;
         }
@@ -40,11 +40,11 @@ public class NotBlankHandler extends AnnotationHandler {
         try {
             Object o = field.get(object);
             if (o == null) {
-                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
             } else if (o instanceof String) {
                 String s = (String) o;
                 if (AnyzmUtils.isBlank(s)) {
-                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
                 }
             } else {
                 throw new ParameterException(ExceptionCodeMsg.NOT_BLANK_CAST_ERROR, field.getName());
@@ -56,7 +56,7 @@ public class NotBlankHandler extends AnnotationHandler {
     }
 
     @Override
-    public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws Exception {
+    public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws ParameterException {
         return null;
     }
 }
