@@ -15,13 +15,13 @@ import lombok.Data;
 @Data
 public class Student {
 
-    @NotNull
+    @NotNull(timing = "123")
     private String name;
 
-    @Range(minValue = 1,maxValue = 2)
-    private int age = 1;
+    @Range(minValue = 1,maxValue = 18,msg = "年龄必须是1-18岁",timing = "456")
+    private int age = 0;
 
-    @AssertBoolean
+    @AssertBoolean(timing = "789",value = false)
     private boolean flag = false;
 
 }

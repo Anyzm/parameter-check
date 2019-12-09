@@ -40,16 +40,16 @@ public class ParameterCheckHandler {
             return;
         }
         //check the field one by one
-        checkOneFiled(object,timing, declaredFields);
+        checkFileds(object,timing, declaredFields);
     }
 
     /**
-     * check filed of one object
+     * check fileds of one object
      *
      * @param fields
      * @throws Exception
      */
-    private static void checkOneFiled(Object object,String timing, Field... fields) throws Exception {
+    public static void checkFileds(Object object,String timing, Field... fields) throws Exception {
         if (fields == null || fields.length == ValueEnum.ZERO) {
             return;
         }
