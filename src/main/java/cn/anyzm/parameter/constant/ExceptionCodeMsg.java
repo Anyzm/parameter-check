@@ -48,18 +48,6 @@ public enum ExceptionCodeMsg {
      */
     NULL(6780001,"object must not be null"),
     /**
-     * empty
-     */
-    EMPTY(6780002,"object must not be empty"),
-    /**
-     * blank
-     */
-    BLANK(6780003,"object must not be blank"),
-    /**
-     * ASSERT_TRUE
-     */
-    ASSERT_TRUE(6780004,"object must be true"),
-    /**
      * the verify annotation is invalid
      */
     ANNOTATION_INVALID(6780005,"annotation is invalid");

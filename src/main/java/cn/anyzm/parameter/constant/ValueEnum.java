@@ -8,14 +8,6 @@ package cn.anyzm.parameter.constant;
  */
 public class ValueEnum {
     /**
-     * Max annotation default value
-     */
-    public static final double MAX_DEFAULT = 1.0;
-    /**
-     * Min annotation default value
-     */
-    public static final double MIN_DEFAULT = 0;
-    /**
      * AssertBoolean annotation default value
      */
     public static final boolean ASSERT_BOOLEAN_DEFAULT_VALUE = true;
@@ -36,10 +28,7 @@ public class ValueEnum {
      * zero
      */
     public static final int ZERO = 0;
-    /**
-     * one
-     */
-    public static final int ONE = 1;
+
     /**
      * MINUS ONE
      */
