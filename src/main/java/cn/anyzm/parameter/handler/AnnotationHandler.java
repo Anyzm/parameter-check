@@ -36,14 +36,6 @@ public abstract class AnnotationHandler implements CheckHandler{
      */
     protected abstract void checkField(Field field,Object object, Annotation annotation) throws ParameterException;
 
-    /**
-     * to check a object for return true pass and return false not pass
-     * @param object
-     * @return
-     * @throws Exception
-     */
-    protected abstract Map<String,String> checkObject(Object object, Annotation annotation, String timing)throws ParameterException;
-
     protected boolean isTiming(String fieldTiming,String... annotationTiming){
         if(AnyzmUtils.isEmpty(annotationTiming)){
             return true;

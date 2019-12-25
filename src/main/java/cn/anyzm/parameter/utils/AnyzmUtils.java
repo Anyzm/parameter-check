@@ -3,8 +3,10 @@ package cn.anyzm.parameter.utils;
 import cn.anyzm.parameter.constant.ValueEnum;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author huangzhaolai-jk
@@ -46,29 +48,45 @@ public class AnyzmUtils {
 
     /**
      * check String is empty
+     *
      * @param s
      * @return
      */
-    public static boolean isEmpty(String s){
+    public static boolean isEmpty(String s) {
         return s == null || ValueEnum.EMPTY_STRING.equals(s);
     }
 
     /**
      * check Collection is empty
+     *
      * @param collection
      * @return
      */
-    public static boolean isEmpty(Collection collection){
+    public static boolean isEmpty(Collection collection) {
         return collection == null || collection.isEmpty();
     }
 
     /**
      * check String is blank
+     *
      * @param s
      * @return
      */
-    public static boolean isBlank(String s){
+    public static boolean isBlank(String s) {
         return s == null || ValueEnum.EMPTY_STRING.equals(s.trim());
+    }
+
+    /**
+     * copy Array to a List
+     * @param array
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> copyArrayToList(T[] array) {
+        if (isEmpty(array)) {
+            return new ArrayList<>();
+        }
+        return Arrays.asList(array);
     }
 
 }

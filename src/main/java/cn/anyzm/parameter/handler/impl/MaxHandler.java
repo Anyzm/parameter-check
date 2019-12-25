@@ -62,11 +62,4 @@ public class MaxHandler extends AnnotationHandler {
         }
     }
 
-    @Override
-    public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws ParameterException {
-        if (object != null && object instanceof Boolean) {
-//            return (Boolean) object;
-        }
-        return null;
-    }
 }

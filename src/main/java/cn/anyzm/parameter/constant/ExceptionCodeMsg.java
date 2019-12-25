@@ -58,7 +58,11 @@ public enum ExceptionCodeMsg {
     /**
      * ASSERT_TRUE
      */
-    ASSERT_TRUE(6780004,"object must be true");
+    ASSERT_TRUE(6780004,"object must be true"),
+    /**
+     * the verify annotation is invalid
+     */
+    ANNOTATION_INVALID(6780005,"annotation is invalid");
 
 
     private int code;

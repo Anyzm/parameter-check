@@ -62,8 +62,4 @@ public class MinHandler extends AnnotationHandler {
         }
     }
 
-    @Override
-    public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws ParameterException {
-        return null;
-    }
 }

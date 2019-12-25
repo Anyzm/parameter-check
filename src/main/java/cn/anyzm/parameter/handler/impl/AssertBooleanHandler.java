@@ -56,13 +56,4 @@ public class AssertBooleanHandler extends AnnotationHandler {
 
     }
 
-    @Override
-    public Map<String,String> checkObject(Object object, Annotation annotation, String timing) throws ParameterException {
-        if (object != null && object instanceof Boolean && annotation != null) {
-            Max max = (Max) annotation;
-//            max.canEquals()
-//            return (Boolean) object;
-        }
-        return null;
-    }
 }
