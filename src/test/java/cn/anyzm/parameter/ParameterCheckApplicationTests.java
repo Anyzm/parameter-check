@@ -4,9 +4,6 @@ import cn.anyzm.parameter.Test.Student;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.handler.ParameterCheckHandler;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ParameterCheckApplicationTests {
 
     public static void main(String[] args) throws Exception {
