@@ -11,25 +11,24 @@ import java.lang.annotation.*;
  * @version 0.0.1
  * @see ParameterCheckHandler
  */
-@Target({ElementType.FIELD,ElementType.PARAMETER,ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface RegularMatch {
-    /**
-     * the regular String for match
-     * @return String
-     */
-    String regular();
+  /**
+   * the regular String for match
+   *
+   * @return String
+   */
+  String regular();
 
-    /**
-     * the msg for not pass check
-     * @return String
-     */
-    String msg() default "the object which add RegularMatch annotation must match the regular";
+  /**
+   * the msg for not pass check
+   *
+   * @return String
+   */
+  String msg() default "the object which add RegularMatch annotation must match the regular";
 
-    /**
-     *  the timing for use the annotation,you can defined multiple timing for different place
-     */
-    String[] timing() default ValueEnum.ALL_THE_TIME;
-
+  /** the timing for use the annotation,you can defined multiple timing for different place */
+  String[] timing() default ValueEnum.ALL_THE_TIME;
 }

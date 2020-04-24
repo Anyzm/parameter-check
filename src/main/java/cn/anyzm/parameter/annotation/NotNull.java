@@ -16,11 +16,12 @@ import java.lang.annotation.*;
 @Inherited
 public @interface NotNull {
 
-    /**
-     * the msg for not pass check
-     * @return String
-     */
-    String msg() default "the object which add NotNull annotation must not be null";
+  /**
+   * the msg for not pass check
+   *
+   * @return String
+   */
+  String msg() default "the object which add NotNull annotation must not be null";
 
     /**
      *  the timing for use the annotation,you can defined multiple timing for different place
