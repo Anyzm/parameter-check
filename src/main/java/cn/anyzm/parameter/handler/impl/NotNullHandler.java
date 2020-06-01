@@ -39,7 +39,7 @@ public class NotNullHandler extends AnnotationHandler {
         throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
       }
     } catch (IllegalAccessException e) {
-      throw new ParameterException(msg);
+      throw new ParameterException(e.getMessage());
     }
   }
 

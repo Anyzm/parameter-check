@@ -46,7 +46,7 @@ public class NotBlankHandler extends AnnotationHandler {
         throw new ParameterException(ExceptionCodeMsg.NOT_BLANK_CAST_ERROR, field.getName());
       }
     } catch (IllegalAccessException e) {
-      throw new ParameterException(msg);
+      throw new ParameterException(e.getMessage());
     }
   }
 

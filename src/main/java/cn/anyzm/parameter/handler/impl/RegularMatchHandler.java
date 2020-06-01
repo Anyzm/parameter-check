@@ -50,7 +50,7 @@ public class RegularMatchHandler extends AnnotationHandler {
       }
 
     } catch (IllegalAccessException e) {
-      throw new ParameterException(msg);
+      throw new ParameterException(e.getMessage());
     }
   }
 

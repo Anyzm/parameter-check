@@ -57,7 +57,7 @@ public class MaxHandler extends AnnotationHandler {
       }
 
     } catch (IllegalAccessException e) {
-      throw new ParameterException(msg);
+      throw new ParameterException(e.getMessage());
     }
   }
 
