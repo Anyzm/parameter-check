@@ -26,7 +26,6 @@ public class Router {
     ANNOTATION_CHECK_MAP.put(NotNull.class, new NotNullHandler());
     ANNOTATION_CHECK_MAP.put(RegularMatch.class, new RegularMatchHandler());
     ANNOTATION_CHECK_MAP.put(Length.class, new LengthHandler());
-    ANNOTATION_CHECK_MAP.put(null, null);
   }
 
   public static boolean containsInCheckList(Class clazz) {
