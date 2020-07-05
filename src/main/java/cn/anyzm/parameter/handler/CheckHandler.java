@@ -22,6 +22,14 @@ public interface CheckHandler {
   void checkFieldTemplate(Field field, Object object, Annotation annotation, String timing)
       throws ParameterException;
 
+    /**
+     * 判断一个参数是否有效
+     * @param object
+     * @param annotation
+     * @throws ParameterException
+     */
+  void checkOneParam(Object object,Annotation annotation)throws ParameterException;
+
   /**
    * check field for catch error message
    *
@@ -34,4 +42,5 @@ public interface CheckHandler {
    */
   String checkFieldForMsg(Field field, Object object, Annotation annotation, String timing)
       throws ParameterException;
+
 }

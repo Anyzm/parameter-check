@@ -59,4 +59,9 @@ public class RegularMatchHandler extends AnnotationHandler {
       throws ParameterException {
     return null;
   }
+
+  @Override
+  public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+
+  }
 }

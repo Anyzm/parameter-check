@@ -8,6 +8,7 @@ import cn.anyzm.parameter.handler.AnnotationHandler;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.util.Objects;
 
 /**
  * @author huangzhaolai-jk
@@ -54,5 +55,19 @@ public class AssertBooleanHandler extends AnnotationHandler {
   protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
       throws ParameterException {
     return null;
+  }
+
+  @Override
+  public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+    if(annotation == null){
+      throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR);
+    }
+    if(object instanceof Boolean){
+      AssertBoolean assertBoolean = (AssertBoolean) annotation;
+      String msg = assertBoolean.msg();
+      if(!Objects.equals(assertBoolean.value(),object)){
+        throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg,object);
+      }
+    }
   }
 }
