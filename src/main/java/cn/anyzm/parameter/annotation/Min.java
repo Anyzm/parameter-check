@@ -11,7 +11,7 @@ import java.lang.annotation.*;
  * @version 0.0.1
  * @see ParameterCheckHandler
  */
-@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.METHOD})
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface Min {
