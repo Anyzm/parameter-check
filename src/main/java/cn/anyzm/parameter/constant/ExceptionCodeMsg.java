@@ -23,6 +23,8 @@ public enum ExceptionCodeMsg {
   RANGE_CAST_ERROR(6781007, "Range must be added to a Number field"),
   /** REGULAR_MATCH_CAST_ERROR */
   REGULAR_MATCH_CAST_ERROR(6781008, "RegularMatch must be added to a String type"),
+  /** NOT_NULL_CAST_ERROR */
+  NOT_NULL_CAST_ERROR(678109, "NotNull must be added to a Object field"),
   /** null */
   NULL(6780001, "object must not be null"),
   /** the verify annotation is invalid */

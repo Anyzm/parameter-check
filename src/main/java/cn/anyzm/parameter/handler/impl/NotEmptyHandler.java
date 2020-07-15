@@ -17,58 +17,86 @@ import java.util.Collection;
  */
 public class NotEmptyHandler extends AnnotationHandler {
 
-  @Override
-  protected boolean isTiming(Annotation annotation, String timing) {
-    if (!(annotation instanceof NotEmpty)) {
-      return false;
-    }
-    NotEmpty notEmpty = (NotEmpty) annotation;
-    String[] annotationTiming = notEmpty.timing();
-    return isTiming(timing, annotationTiming);
-  }
-
-  @Override
-  public void checkField(Field field, Object object, Annotation annotation)
-      throws ParameterException {
-    if (field == null || annotation == null) {
-      return;
-    }
-    field.setAccessible(true);
-    NotEmpty notEmpty = (NotEmpty) annotation;
-    String msg = notEmpty.msg();
-    try {
-      Object o = field.get(object);
-      if (o instanceof String) {
-        String s = (String) o;
-        if (AnyzmUtils.isEmpty(s)) {
-          throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+    @Override
+    protected boolean isTiming(Annotation annotation, String timing) {
+        if (!(annotation instanceof NotEmpty)) {
+            return false;
         }
-      } else if (o instanceof Collection) {
-        Collection collection = (Collection) o;
-        if (AnyzmUtils.isEmpty(collection)) {
-          throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
-        }
-      } else if (o.getClass().isArray()) {
-        Object[] objects = (Object[]) o;
-        if (AnyzmUtils.isDeepEmpty(objects)) {
-          throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
-        }
-      } else {
-        throw new ParameterException(ExceptionCodeMsg.NOT_EMPTY_CAST_ERROR, field.getName());
-      }
-    } catch (IllegalAccessException e) {
-      throw new ParameterException(e.getMessage());
+        NotEmpty notEmpty = (NotEmpty) annotation;
+        String[] annotationTiming = notEmpty.timing();
+        return isTiming(timing, annotationTiming);
     }
-  }
 
-  @Override
-  protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
-      throws ParameterException {
-    return null;
-  }
+    @Override
+    public void checkField(Field field, Object object, Annotation annotation)
+            throws ParameterException {
+        if (field == null || annotation == null) {
+            return;
+        }
+        field.setAccessible(true);
+        NotEmpty notEmpty = (NotEmpty) annotation;
+        String msg = notEmpty.msg();
+        try {
+            Object o = field.get(object);
+            if(object == null){
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+            }
+            if (o instanceof String) {
+                String s = (String) o;
+                if (AnyzmUtils.isEmpty(s)) {
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+                }
+            } else if (o instanceof Collection) {
+                Collection collection = (Collection) o;
+                if (AnyzmUtils.isEmpty(collection)) {
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+                }
+            } else if (o.getClass().isArray()) {
+                Object[] objects = (Object[]) o;
+                if (AnyzmUtils.isDeepEmpty(objects)) {
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+                }
+            } else {
+                throw new ParameterException(ExceptionCodeMsg.NOT_EMPTY_CAST_ERROR, field.getName());
+            }
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+    }
 
-  @Override
-  public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+    @Override
+    protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
+            throws ParameterException {
+        return null;
+    }
 
-  }
+    @Override
+    public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+        if (annotation == null) {
+            throw new ParameterException(ExceptionCodeMsg.NOT_EMPTY_CAST_ERROR);
+        }
+        NotEmpty notEmpty = (NotEmpty) annotation;
+        String msg = notEmpty.msg();
+        if(object == null){
+            throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+        }
+        if (object instanceof String) {
+            String s = (String) object;
+            if (AnyzmUtils.isEmpty(s)) {
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+            }
+        } else if (object instanceof Collection) {
+            Collection collection = (Collection) object;
+            if (AnyzmUtils.isEmpty(collection)) {
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+            }
+        } else if (object.getClass().isArray()) {
+            Object[] objects = (Object[]) object;
+            if (AnyzmUtils.isDeepEmpty(objects)) {
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+            }
+        } else {
+            throw new ParameterException(ExceptionCodeMsg.NOT_EMPTY_CAST_ERROR, object);
+        }
+    }
 }

@@ -16,52 +16,67 @@ import java.util.regex.Pattern;
  */
 public class RegularMatchHandler extends AnnotationHandler {
 
-  @Override
-  protected boolean isTiming(Annotation annotation, String timing) {
-    if (!(annotation instanceof RegularMatch)) {
-      return false;
-    }
-    RegularMatch regularMatch = (RegularMatch) annotation;
-    String[] annotationTiming = regularMatch.timing();
-    return isTiming(timing, annotationTiming);
-  }
-
-  @Override
-  public void checkField(Field field, Object object, Annotation annotation)
-      throws ParameterException {
-    if (field == null || annotation == null) {
-      return;
-    }
-    field.setAccessible(true);
-    RegularMatch regularMatch = (RegularMatch) annotation;
-    String msg = regularMatch.msg();
-    try {
-      Object o = field.get(object);
-      if (o == null) {
-        throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
-      } else if (o instanceof String) {
-        String s = (String) o;
-        boolean matches = Pattern.matches(regularMatch.regular(), s);
-        if (!matches) {
-          throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+    @Override
+    protected boolean isTiming(Annotation annotation, String timing) {
+        if (!(annotation instanceof RegularMatch)) {
+            return false;
         }
-      } else {
-        throw new ParameterException(ExceptionCodeMsg.REGULAR_MATCH_CAST_ERROR, field.getName());
-      }
-
-    } catch (IllegalAccessException e) {
-      throw new ParameterException(e.getMessage());
+        RegularMatch regularMatch = (RegularMatch) annotation;
+        String[] annotationTiming = regularMatch.timing();
+        return isTiming(timing, annotationTiming);
     }
-  }
 
-  @Override
-  protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
-      throws ParameterException {
-    return null;
-  }
+    @Override
+    public void checkField(Field field, Object object, Annotation annotation)
+            throws ParameterException {
+        if (field == null || annotation == null) {
+            return;
+        }
+        field.setAccessible(true);
+        RegularMatch regularMatch = (RegularMatch) annotation;
+        String msg = regularMatch.msg();
+        try {
+            Object o = field.get(object);
+            if (o == null) {
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+            } else if (o instanceof String) {
+                String s = (String) o;
+                boolean matches = Pattern.matches(regularMatch.regular(), s);
+                if (!matches) {
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+                }
+            } else {
+                throw new ParameterException(ExceptionCodeMsg.REGULAR_MATCH_CAST_ERROR, field.getName());
+            }
 
-  @Override
-  public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+    }
 
-  }
+    @Override
+    protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
+            throws ParameterException {
+        return null;
+    }
+
+    @Override
+    public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+        if (annotation == null) {
+            throw new ParameterException(ExceptionCodeMsg.REGULAR_MATCH_CAST_ERROR);
+        }
+        RegularMatch regularMatch = (RegularMatch) annotation;
+        String msg = regularMatch.msg();
+        if (object == null) {
+            throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+        } else if (object instanceof String) {
+            String s = (String) object;
+            boolean matches = Pattern.matches(regularMatch.regular(), s);
+            if (!matches) {
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+            }
+        } else {
+            throw new ParameterException(ExceptionCodeMsg.REGULAR_MATCH_CAST_ERROR, object);
+        }
+    }
 }

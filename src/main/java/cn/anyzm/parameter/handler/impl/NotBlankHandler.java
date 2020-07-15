@@ -1,6 +1,5 @@
 package cn.anyzm.parameter.handler.impl;
 
-import cn.anyzm.parameter.annotation.AssertBoolean;
 import cn.anyzm.parameter.annotation.NotBlank;
 import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
@@ -10,7 +9,6 @@ import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.Objects;
 
 /**
  * @author huangzhaolai-jk
@@ -64,11 +62,14 @@ public class NotBlankHandler extends AnnotationHandler {
     @Override
     public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
         if (annotation == null) {
-            throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR);
+            throw new ParameterException(ExceptionCodeMsg.NOT_BLANK_CAST_ERROR);
+        }
+        NotBlank notBlank = (NotBlank) annotation;
+        String msg = notBlank.msg();
+        if (object == null) {
+            throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
         }
         if (object instanceof String) {
-            NotBlank notBlank = (NotBlank) annotation;
-            String msg = notBlank.msg();
             if (AnyzmUtils.isBlank((String) object)) {
                 throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
             }

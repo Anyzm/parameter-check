@@ -16,58 +16,60 @@ import java.util.Objects;
  */
 public class AssertBooleanHandler extends AnnotationHandler {
 
-  @Override
-  protected boolean isTiming(Annotation annotation, String timing) {
-    if (!(annotation instanceof AssertBoolean)) {
-      return false;
-    }
-    AssertBoolean assertBoolean = (AssertBoolean) annotation;
-    String[] annotationTiming = assertBoolean.timing();
-    return isTiming(timing, annotationTiming);
-  }
-
-  @Override
-  public void checkField(Field field, Object object, Annotation annotation)
-      throws ParameterException {
-    if (field == null || annotation == null) {
-      return;
-    }
-    field.setAccessible(true);
-    AssertBoolean assertBoolean = (AssertBoolean) annotation;
-    String msg = assertBoolean.msg();
-    try {
-      Object o = field.get(object);
-      if (o instanceof Boolean) {
-        Boolean flag = (Boolean) o;
-        if (flag != assertBoolean.value()) {
-          throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+    @Override
+    protected boolean isTiming(Annotation annotation, String timing) {
+        if (!(annotation instanceof AssertBoolean)) {
+            return false;
         }
-      } else {
-        throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR, field.getName());
-      }
-
-    } catch (IllegalAccessException e) {
-      throw new ParameterException(e.getMessage());
+        AssertBoolean assertBoolean = (AssertBoolean) annotation;
+        String[] annotationTiming = assertBoolean.timing();
+        return isTiming(timing, annotationTiming);
     }
-  }
 
-  @Override
-  protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
-      throws ParameterException {
-    return null;
-  }
+    @Override
+    public void checkField(Field field, Object object, Annotation annotation)
+            throws ParameterException {
+        if (field == null || annotation == null) {
+            return;
+        }
+        field.setAccessible(true);
+        AssertBoolean assertBoolean = (AssertBoolean) annotation;
+        String msg = assertBoolean.msg();
+        try {
+            Object o = field.get(object);
+            if (o instanceof Boolean) {
+                Boolean flag = (Boolean) o;
+                if (flag != assertBoolean.value()) {
+                    throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, field.getName());
+                }
+            } else {
+                throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR, field.getName());
+            }
 
-  @Override
-  public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
-    if(annotation == null){
-      throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR);
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
     }
-    if(object instanceof Boolean){
-      AssertBoolean assertBoolean = (AssertBoolean) annotation;
-      String msg = assertBoolean.msg();
-      if(!Objects.equals(assertBoolean.value(),object)){
-        throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg,object);
-      }
+
+    @Override
+    protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
+            throws ParameterException {
+        return null;
     }
-  }
+
+    @Override
+    public void checkOneParam(Object object, Annotation annotation) throws ParameterException {
+        if (annotation == null) {
+            throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR);
+        }
+        if (object instanceof Boolean) {
+            AssertBoolean assertBoolean = (AssertBoolean) annotation;
+            String msg = assertBoolean.msg();
+            if (!Objects.equals(assertBoolean.value(), object)) {
+                throw new ParameterException(ValueEnum.DEFAULT_ERROR_CODE, msg, object);
+            }
+        } else {
+            throw new ParameterException(ExceptionCodeMsg.ASSERT_BOOLEAN_CAST_ERROR, object);
+        }
+    }
 }
