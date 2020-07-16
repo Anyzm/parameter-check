@@ -5,6 +5,7 @@ import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.handler.AnnotationHandler;
+import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -71,7 +72,45 @@ public class RangeHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        Range range = (Range) annotation;
+        String msg = range.msg();
+        try {
+            Object o = field.get(object);
+            if (o instanceof Number) {
+                // Number type check
+                Number number = (Number) o;
+                boolean canMinEquals = range.canMinEquals();
+                boolean canMaxEquals = range.canMaxEquals();
+                if (canMinEquals) {
+                    if (number.doubleValue() < range.minValue()) {
+                        return msg;
+                    }
+                } else {
+                    if (number.doubleValue() <= range.minValue()) {
+                        return msg;
+                    }
+                }
+                if (canMaxEquals) {
+                    if (number.doubleValue() > range.maxValue()) {
+                        return msg;
+                    }
+                } else {
+                    if (number.doubleValue() >= range.maxValue()) {
+                        return msg;
+                    }
+                }
+            } else {
+                return msg;
+            }
+
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        return AnyzmUtils.emptyString();
     }
 
     @Override

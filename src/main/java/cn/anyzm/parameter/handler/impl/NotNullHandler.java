@@ -5,6 +5,7 @@ import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.handler.AnnotationHandler;
+import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -47,7 +48,21 @@ public class NotNullHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        NotNull notNull = (NotNull) annotation;
+        String msg = notNull.msg();
+        try {
+            Object o = field.get(object);
+            if (o == null) {
+                return msg;
+            }
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        return AnyzmUtils.emptyString();
     }
 
     @Override

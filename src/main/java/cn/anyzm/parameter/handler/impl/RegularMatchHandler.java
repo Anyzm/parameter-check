@@ -5,6 +5,7 @@ import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.handler.AnnotationHandler;
+import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -57,7 +58,30 @@ public class RegularMatchHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        RegularMatch regularMatch = (RegularMatch) annotation;
+        String msg = regularMatch.msg();
+        try {
+            Object o = field.get(object);
+            if (o == null) {
+                return msg;
+            } else if (o instanceof String) {
+                String s = (String) o;
+                boolean matches = Pattern.matches(regularMatch.regular(), s);
+                if (!matches) {
+                    return msg;
+                }
+            } else {
+                return msg;
+            }
+
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        return AnyzmUtils.emptyString();
     }
 
     @Override

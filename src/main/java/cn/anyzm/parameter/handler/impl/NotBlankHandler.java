@@ -56,7 +56,29 @@ public class NotBlankHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        NotBlank notBlank = (NotBlank) annotation;
+        String msg = notBlank.msg();
+        try {
+            Object o = field.get(object);
+            if (o == null) {
+                return msg;
+            }
+            if (o instanceof String) {
+                String s = (String) o;
+                if (AnyzmUtils.isBlank(s)) {
+                    return msg;
+                }
+            } else {
+               return msg;
+            }
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        return ValueEnum.EMPTY_STRING;
     }
 
     @Override

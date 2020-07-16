@@ -5,6 +5,7 @@ import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.handler.AnnotationHandler;
+import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -54,7 +55,27 @@ public class AssertBooleanHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        AssertBoolean assertBoolean = (AssertBoolean) annotation;
+        String msg = assertBoolean.msg();
+        Object o = null;
+        try {
+            o = field.get(object);
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        if (o instanceof Boolean) {
+            Boolean flag = (Boolean) o;
+            if (flag != assertBoolean.value()) {
+                return msg;
+            }
+        } else {
+            return msg;
+        }
+        return AnyzmUtils.emptyString();
     }
 
     @Override

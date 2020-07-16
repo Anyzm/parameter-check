@@ -67,7 +67,39 @@ public class NotEmptyHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        NotEmpty notEmpty = (NotEmpty) annotation;
+        String msg = notEmpty.msg();
+        try {
+            Object o = field.get(object);
+            if(object == null){
+                return msg;
+            }
+            if (o instanceof String) {
+                String s = (String) o;
+                if (AnyzmUtils.isEmpty(s)) {
+                    return msg;
+                }
+            } else if (o instanceof Collection) {
+                Collection collection = (Collection) o;
+                if (AnyzmUtils.isEmpty(collection)) {
+                    return msg;
+                }
+            } else if (o.getClass().isArray()) {
+                Object[] objects = (Object[]) o;
+                if (AnyzmUtils.isDeepEmpty(objects)) {
+                    return msg;
+                }
+            } else {
+                return msg;
+            }
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        return AnyzmUtils.emptyString();
     }
 
     @Override

@@ -5,6 +5,7 @@ import cn.anyzm.parameter.constant.ExceptionCodeMsg;
 import cn.anyzm.parameter.constant.ValueEnum;
 import cn.anyzm.parameter.exception.ParameterException;
 import cn.anyzm.parameter.handler.AnnotationHandler;
+import cn.anyzm.parameter.utils.AnyzmUtils;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -70,7 +71,43 @@ public class LengthHandler extends AnnotationHandler {
     @Override
     protected String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException {
-        return null;
+        if (field == null || annotation == null) {
+            return AnyzmUtils.emptyString();
+        }
+        field.setAccessible(true);
+        Length length = (Length) annotation;
+        String msg = length.msg();
+        try {
+            Object o = field.get(object);
+            if (o == null) {
+                if (length.minLength() != ValueEnum.MINUS_ONE) {
+                    return msg;
+                }
+            } else if (o instanceof String) {
+                // String type check length
+                String s = (String) o;
+                if (s.length() < length.maxLength() || s.length() > length.maxLength()) {
+                    return msg;
+                }
+            } else if (o instanceof Collection) {
+                // Collection type check size
+                Collection collection = (Collection) o;
+                if (collection.size() < length.minLength() || collection.size() > length.maxLength()) {
+                    return msg;
+                }
+            } else if (o.getClass().isArray()) {
+                Object[] objects = (Object[]) o;
+                if (objects.length < length.minLength() || objects.length > length.maxLength()) {
+                    return msg;
+                }
+            } else {
+                return msg;
+            }
+
+        } catch (IllegalAccessException e) {
+            throw new ParameterException(e.getMessage());
+        }
+        return AnyzmUtils.emptyString();
     }
 
     @Override
