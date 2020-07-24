@@ -21,6 +21,7 @@
   <component name="ProjectId" id="1SykttiwHIDus3ouJWafj2e3c4X" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../parameter-starter" />
@@ -116,7 +117,7 @@
       <workItem from="1573961305959" duration="642000" />
       <workItem from="1575788269647" duration="1473000" />
       <workItem from="1595608928573" duration="2618000" />
-      <workItem from="1595612810734" duration="392000" />
+      <workItem from="1595612810734" duration="661000" />
     </task>
     <servers />
   </component>
