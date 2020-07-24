@@ -5,12 +5,18 @@
 
     <groupId>com.city.party</groupId>
     <artifactId>parameter-check</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>parameter-core</module>
+        <module>parameter-starter</module>
+    </modules>
     <name>parameter-check</name>
     <description>utils project for parameter.check</description>
 
     <properties>
         <lombok.version>1.18.8</lombok.version>
+        <maven-source-plugin.version>3.0.1</maven-source-plugin.version>
     </properties>
     <dependencies>
         <dependency>
