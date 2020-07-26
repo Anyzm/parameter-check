@@ -7,6 +7,13 @@
     <artifactId>parameter-check</artifactId>
     <packaging>pom</packaging>
     <version>0.0.1-RELEASE</version>
+
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
     <modules>
         <module>parameter-core</module>
         <module>parameter-starter</module>
@@ -26,5 +33,42 @@
             <version>${lombok.version}</version>
         </dependency>
     </dependencies>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>master</tag>
+        <url>git@github.com:Anyzm/parameter-check.git</url>
+        <connection>scm:git:git@github.com:Anyzm/parameter-check.git</connection>
+        <developerConnection>scm:git:git@github.com:Anyzm/parameter-check.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>anyzm</name>
+            <email>675670122@qq.com</email>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+
+        <!--上传仓库-->
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+
+        <!--上传仓库-->
+        <repository>
+            <id>sonatype-nexus-releases</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+
+    </distributionManagement>
+
 
 </project>
