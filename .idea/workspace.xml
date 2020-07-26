@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c6bec94-68ca-46f4-a4ab-d4e8943c69fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/parameter-core/parameter-core.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parameter-starter/parameter-starter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-check.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-check.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-core/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-core/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-core/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-starter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-starter/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-starter/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-starter/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

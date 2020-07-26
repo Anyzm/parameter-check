@@ -6,7 +6,7 @@
     <groupId>com.github.anyzm</groupId>
     <artifactId>parameter-check</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1-RELEASE</version>
     <modules>
         <module>parameter-core</module>
         <module>parameter-starter</module>
