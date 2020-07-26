@@ -36,20 +36,20 @@ public abstract class AnnotationHandler implements CheckHandler {
   /**
    * one field check for one annotation
    *
-   * @param field
-   * @param object
-   * @param annotation
+   * @param field the check field
+   * @param object the check object
+   * @param annotation the check annotation
    */
   protected abstract void checkField(Field field, Object object, Annotation annotation)
       throws ParameterException;
 
     /**
      * one field check for one annotation and return error message
-     * @param field
-     * @param object
-     * @param annotation
-     * @return
-     * @throws ParameterException
+     * @param field the check field
+     * @param object the check object
+     * @param annotation the check annotation
+     * @return error massage
+     * @throws ParameterException exception
      */
   protected abstract String checkFieldForMsg(Field field, Object object, Annotation annotation)
             throws ParameterException;
