@@ -17,7 +17,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 
 /**
- * @Author ZhaoLai Huang
+ * @author ZhaoLai Huang
  * created by ZhaoLai Huang on 2020/2/3
  */
 @Aspect

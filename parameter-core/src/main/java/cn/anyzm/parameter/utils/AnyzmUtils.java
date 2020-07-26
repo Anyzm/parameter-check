@@ -12,7 +12,7 @@ public class AnyzmUtils {
 
     /**
      * return a empty String
-     * @return
+     * @return string
      */
     public static String emptyString(){
         return ValueEnum.EMPTY_STRING;
@@ -21,9 +21,9 @@ public class AnyzmUtils {
     /**
      * check the array and it's elements all are empty
      *
-     * @param array
-     * @param <T>
-     * @return
+     * @param array the check array
+     * @param <T> the object
+     * @return is deep Empty
      */
     public static <T> boolean isDeepEmpty(T[] array) {
         if (array == null || array.length == ValueEnum.ZERO) {
@@ -41,9 +41,9 @@ public class AnyzmUtils {
     /**
      * check the array is empty
      *
-     * @param array
-     * @param <T>
-     * @return
+     * @param array the check array
+     * @param <T> the object
+     * @return is Empty
      */
     public static <T> boolean isEmpty(T[] array) {
         return array == null || array.length == ValueEnum.ZERO;
@@ -52,8 +52,8 @@ public class AnyzmUtils {
     /**
      * check the Map is empty
      *
-     * @param map
-     * @param <T>
+     * @param map the check map
+     * @param <T> the object
      * @return
      */
     public static <T> boolean isEmpty(Map map) {
@@ -63,8 +63,8 @@ public class AnyzmUtils {
     /**
      * check String is empty
      *
-     * @param s
-     * @return
+     * @param s the check string
+     * @return is empty
      */
     public static boolean isEmpty(String s) {
         return s == null || ValueEnum.EMPTY_STRING.equals(s);
@@ -72,9 +72,8 @@ public class AnyzmUtils {
 
     /**
      * check Collection is empty
-     *
-     * @param collection
-     * @return
+     * @param collection the check collection
+     * @return Collection is empty
      */
     public static boolean isEmpty(Collection collection) {
         return collection == null || collection.isEmpty();
@@ -83,8 +82,8 @@ public class AnyzmUtils {
     /**
      * check String is blank
      *
-     * @param s
-     * @return
+     * @param s the check string
+     * @return isBlank
      */
     public static boolean isBlank(String s) {
         return s == null || ValueEnum.EMPTY_STRING.equals(s.trim());
@@ -93,9 +92,9 @@ public class AnyzmUtils {
     /**
      * copy Array to a List
      *
-     * @param array
-     * @param <T>
-     * @return
+     * @param array the copyed array
+     * @param <T> the object
+     * @return list
      */
     public static <T> List<T> copyArrayToList(T[] array) {
         if (isEmpty(array)) {

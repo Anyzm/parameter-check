@@ -13,32 +13,32 @@ public interface CheckHandler {
 
     /**
      * check field template function
-     * @param field
-     * @param object
-     * @param annotation
-     * @param timing
-     * @throws ParameterException
+     * @param field the check field
+     * @param object the check object
+     * @param annotation the check annotation
+     * @param timing the timing to check
+     * @throws ParameterException exception
      */
   void checkFieldTemplate(Field field, Object object, Annotation annotation, String timing)
       throws ParameterException;
 
     /**
      * 判断一个参数是否有效
-     * @param object
-     * @param annotation
-     * @throws ParameterException
+     * @param object the check object
+     * @param annotation the check annotation
+     * @throws ParameterException exception
      */
   void checkOneParam(Object object, Annotation annotation)throws ParameterException;
 
   /**
    * check field for catch error message
    *
-   * @param field
-   * @param object
-   * @param annotation
-   * @param timing
-   * @return
-   * @throws ParameterException
+   * @param field the check field
+   * @param object the check object
+   * @param annotation the check annotation
+   * @param timing the timing to check
+   * @return error massage
+   * @throws ParameterException exception
    */
   String checkFieldForMsg(Field field, Object object, Annotation annotation, String timing)
       throws ParameterException;

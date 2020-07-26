@@ -10,7 +10,6 @@ import java.lang.annotation.Target;
 
 /**
  * @author huangzhaolai-jk
- * @time 2019-10-12
  * @version 0.0.1
  * @see ParameterCheckHandler
  */
@@ -21,7 +20,7 @@ public @interface Verify {
   /**
    * the timing or version for check
    *
-   * @return
+   * @return the check timing
    */
   String timing() default ValueEnum.ALL_THE_TIME;
 }

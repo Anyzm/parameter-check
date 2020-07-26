@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 /**
  * @author huangzhaolai-jk
- * @time 2019-10-12
  * @version 0.0.1
  * @see ParameterCheckHandler
  */
@@ -16,10 +15,14 @@ import java.lang.annotation.*;
 @Inherited
 public @interface Length {
 
-  /** the value for the min length */
+  /** the value for the min length *
+   * @return the min length
+   */
   int minLength() default ValueEnum.MINUS_ONE;
 
-  /** the value for the max length */
+  /** the value for the max length *
+   * @return the max length
+   */
   int maxLength() default Integer.MAX_VALUE;
 
   /**
@@ -29,6 +32,8 @@ public @interface Length {
    */
   String msg() default "the number which add Max annotation must be litter than max value";
 
-  /** the timing for use the annotation,you can defined multiple timing for different place */
+  /** the timing for use the annotation,you can defined multiple timing for different place *
+   * @return the use timing
+   */
   String[] timing() default ValueEnum.ALL_THE_TIME;
 }

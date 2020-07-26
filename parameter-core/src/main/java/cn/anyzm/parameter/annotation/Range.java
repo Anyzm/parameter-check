@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 /**
  * @author huangzhaolai-jk
- * @time 2019-10-12
  * @version 0.0.1
  * @see ParameterCheckHandler
  */
@@ -16,10 +15,14 @@ import java.lang.annotation.*;
 @Inherited
 public @interface Range {
 
-  /** the value for min value */
+  /** the value for min value *
+   * @return the min value
+   */
   double minValue();
 
-  /** the value for max value */
+  /** the value for max value *
+   * @return the max value
+   */
   double maxValue();
 
   /**
@@ -43,6 +46,8 @@ public @interface Range {
    */
   String msg() default "the number which add Range annotation must be in the min and max range";
 
-  /** the timing for use the annotation,you can defined multiple timing for different place */
+  /** the timing for use the annotation,you can defined multiple timing for different place *
+   * @return the timing to use
+   */
   String[] timing() default ValueEnum.ALL_THE_TIME;
 }

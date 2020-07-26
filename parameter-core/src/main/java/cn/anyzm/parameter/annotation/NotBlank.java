@@ -7,7 +7,6 @@ import java.lang.annotation.*;
 
 /**
  * @author huangzhaolai-jk
- * @time 2019-10-12
  * @version 0.0.1
  * @see ParameterCheckHandler
  */
@@ -23,6 +22,8 @@ public @interface NotBlank {
    */
   String msg() default "the object which add NotNull annotation must not be blank";
 
-  /** the timing for use the annotation,you can defined multiple timing for different place */
+  /** the timing for use the annotation,you can defined multiple timing for different place *
+   * @return the use timing
+   */
   String[] timing() default ValueEnum.ALL_THE_TIME;
 }
