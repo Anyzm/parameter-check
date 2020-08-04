@@ -34,7 +34,7 @@ public class Student {
         ParameterCheckHandler.checkFiled(student,"789");
     }
 ```
-其中ParameterCheckHandler.checkFiled有重载方法，可以传入校验的timing，不传默认全部校验。
+ParameterCheckHandler.checkFiled has overload method，use timing by yourself，verify all the timing without timing input。
 
 ##2、spring-boot project demo
 ```
@@ -60,4 +60,4 @@ public class TestController {
 }
 
 ```
-在需要拦截的方法上加上@Verify的注解，另外在需要校验的引用类型参数前加上@Verify，同时可以传入timing校验时机。如果参数是基本类型或是字符串类型，则可直接加上@NotNull，@NotEmpty等注解。
+add @Verify on your method，and add @Verify before your parameter，you can use it with timing。if the parameter is the Basic types or String，you can directly use @NotNull，@NotEmpty and so on。
