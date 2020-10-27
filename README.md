@@ -2,6 +2,16 @@
 a java project for parameter check
 
 ##1、spring project demo
+
+pom 
+```
+ <dependency>
+     <groupId>com.github.anyzm</groupId>
+     <artifactId>parameter-core</artifactId>
+     <version>0.0.1-RELEASE</version>
+ </dependency>
+```
+
 ```
 package com.example.demo;
 import cn.anyzm.parameter.annotation.AssertBoolean;
@@ -37,6 +47,15 @@ public class Student {
 ParameterCheckHandler.checkFiled has overload method，use timing by yourself，verify all the timing without timing input。
 
 ##2、spring-boot project demo
+pom 
+```
+ <dependency>
+     <groupId>com.github.anyzm</groupId>
+     <artifactId>parameter-starter</artifactId>
+     <version>0.0.1-RELEASE</version>
+ </dependency>
+```
+
 ```
 package com.example.demo;
 
