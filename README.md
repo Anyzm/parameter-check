@@ -1,7 +1,7 @@
 # parameter-check
 a java project for parameter check
 
-##1、spring project demo
+## 1、spring project demo
 
 pom 
 ```
@@ -46,7 +46,7 @@ public class Student {
 ```
 ParameterCheckHandler.checkFiled has overload method，use timing by yourself，verify all the timing without timing input。
 
-##2、spring-boot project demo
+## 2、spring-boot project demo
 pom 
 ```
  <dependency>
