@@ -187,7 +187,7 @@ public class ParameterCheckHandler {
             // get the field all annotation
             Annotation[] declaredAnnotations = field.getDeclaredAnnotations();
             if (AnyzmUtils.isDeepEmpty(declaredAnnotations)) {
-                return;
+                continue;
             }
             for (Annotation annotation : declaredAnnotations) {
                 if (annotation != null && Router.containsInCheckList(annotation.annotationType())) {
@@ -216,7 +216,7 @@ public class ParameterCheckHandler {
             // get the field all annotation
             Annotation[] declaredAnnotations = field.getDeclaredAnnotations();
             if (AnyzmUtils.isDeepEmpty(declaredAnnotations)) {
-                return Collections.EMPTY_MAP;
+                continue;
             }
             for (Annotation annotation : declaredAnnotations) {
                 if (annotation != null && Router.containsInCheckList(annotation.annotationType())) {

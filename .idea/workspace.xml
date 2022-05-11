@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1c6bec94-68ca-46f4-a4ab-d4e8943c69fe" name="Default Changelist" comment="加上readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-check.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-check.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/parameter-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/parameter-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-starter/parameter-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-starter/parameter-starter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/handler/ParameterCheckHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/handler/ParameterCheckHandler.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,6 +195,7 @@
       <workItem from="1650468384806" duration="25000" />
       <workItem from="1650468890817" duration="1879000" />
       <workItem from="1650546720329" duration="141000" />
+      <workItem from="1652274543388" duration="775000" />
     </task>
     <servers />
   </component>
