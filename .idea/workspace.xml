@@ -1,31 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c6bec94-68ca-46f4-a4ab-d4e8943c69fe" name="Default Changelist" comment="">
+    <list default="true" id="1c6bec94-68ca-46f4-a4ab-d4e8943c69fe" name="Default Changelist" comment="加上readme">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parameter-check.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-check.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameter-core/parameter-core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/parameter-core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/AssertBoolean.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/AssertBoolean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Length.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Length.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Max.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Max.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Min.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Min.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/NotBlank.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/NotBlank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/NotEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/NotEmpty.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/NotNull.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/NotNull.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/RegularMatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/RegularMatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Verify.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/annotation/Verify.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/handler/AnnotationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/handler/AnnotationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/handler/CheckHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/handler/CheckHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/utils/AnyzmUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-core/src/main/java/cn/anyzm/parameter/utils/AnyzmUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/parameter-starter/parameter-starter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-starter/parameter-starter.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/parameter-starter/src/main/java/cn/anyzm/parameter/starter/common/ParameterCheckAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/parameter-starter/src/main/java/cn/anyzm/parameter/starter/common/ParameterCheckAspect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -51,13 +40,16 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1SykttiwHIDus3ouJWafj2e3c4X" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../parameter-starter" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../city-party-common-web" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -198,6 +190,13 @@
       <workItem from="1575788269647" duration="1473000" />
       <workItem from="1595608928573" duration="2618000" />
       <workItem from="1595612810734" duration="881000" />
+      <workItem from="1596971784649" duration="802000" />
+      <workItem from="1650286864683" duration="947000" />
+      <workItem from="1650464637530" duration="1330000" />
+      <workItem from="1650467730008" duration="623000" />
+      <workItem from="1650468384806" duration="25000" />
+      <workItem from="1650468890817" duration="1879000" />
+      <workItem from="1650546720329" duration="141000" />
     </task>
     <servers />
   </component>
